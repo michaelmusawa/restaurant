@@ -1,25 +1,46 @@
-/*
+
 @font-face {
 
     font-family: 'MyFont';
   
-    src: url('./my-font.woff2') format('woff2'),
-  
-      url('./my-font.woff') format('woff');
+    src: url('./rubikIso.ttf') format('ttf'),
+    url('./lobster.ttf') format('ttf');
+
   
     font-weight: 600;
   
-    font-style: normal;
+    font-style: italic;
   
   }
   
-  */
+* {
+  border: 1px solid black;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: auto;
   
-   .hello {
-     color: red;
-  
-   }
-   body {
-    background-color: #198754;
-    border: 1px solid red;
-   }
+}
+.home,
+.menu,
+.info {
+  width: 150px;
+  height:50px;
+  margin-left:3rem;
+  border-radius:.4em ;
+  background:#fff;
+}
+
+img {
+  max-width:45%;
+  max-height: calc(max-width);
+  margin: 20px;
+}
+
+h1 {
+  font-family: 'MyFont';
+}
