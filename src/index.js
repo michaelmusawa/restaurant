@@ -1,29 +1,55 @@
-import _ from 'lodash';
 import './style.css';
 import menu from './menu.js';
 import info from './info.js';
-
 import pageLoad from './page_load.js';
 
-pageLoad();
+function navBar() {
+  const navBar = document.createElement('div');
+  navBar.classList.add('nav-bar');
 
+  const btnHome = document.createElement('button');
+  btnHome.classList.add('home');
+  btnHome.innerHTML = 'Home';
 
-const btn_menu = document.querySelector('#menu');
-  btn_menu.addEventListener('click', () => {
-  clearBody();
-  menu(); // Call the menu function or add your menu functionality here
-  });
+  const btnMenu = document.createElement('button');
+  btnMenu.classList.add('menu');
+  btnMenu.innerHTML = 'Menu';
 
-  const btn_info = document.querySelector('#info');
-  btn_info.addEventListener('click', () => {
-  clearBody();
-  info(); // Call the info function or add your info functionality here
-  });
+  const btnInfo = document.createElement('button');
+  btnInfo.classList.add('info');
+  btnInfo.innerHTML = 'Contact';
 
-  function clearBody() {
-    while (document.body.firstChild) {
-    document.body.removeChild(document.body.firstChild);
+  navBar.appendChild(btnHome);
+  navBar.appendChild(btnMenu);
+  navBar.appendChild(btnInfo);
+
+  document.body.appendChild(navBar);
+}
+
+navBar();
+
+const buttons = document.querySelectorAll('.home, .menu, .info');
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    clearBody();
+    navBar();
+    button.classList.add('sunken');
+
+    if (button.classList.contains('home')) {
+      pageLoad();
+    } else if (button.classList.contains('menu')) {
+      menu();
+    } else if (button.classList.contains('info')) {
+      info();
     }
-    
-  } 
+  });
+});
 
+function clearBody() {
+  while (document.body.firstChild) {
+    document.body.removeChild(document.body.lastChild);
+  }
+}
+
+pageLoad();
